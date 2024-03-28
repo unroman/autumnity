@@ -5,6 +5,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile.UncheckedModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -22,10 +23,22 @@ public class AutumnityItemModelProvider extends ItemModelProvider {
 	protected void registerModels() {
 		this.generatedItem(MAPLE_BOAT.getFirst().get(), MAPLE_BOAT.getSecond().get(), MAPLE_FURNACE_BOAT.get(), LARGE_MAPLE_BOAT.get());
 		this.generatedItem(SAP_BOTTLE.get(), SYRUP_BOTTLE.get(), FOUL_BERRIES.get(), FOUL_BERRY_PIPS.get(), FOUL_SOUP.get(), PUMPKIN_BREAD.get());
-		this.generatedItem(SNAIL_SHELL_PIECE.get(), SNAIL_SHELL_CHESTPLATE.get(), TURKEY_EGG.get());
+		this.generatedItem(SNAIL_SHELL_PIECE.get(), TURKEY_EGG.get());
 		this.handheldItem(TURKEY_PIECE.get(), COOKED_TURKEY_PIECE.get());
 		this.generatedItem(MAPLE_LEAF_BANNER_PATTERN.get(), SWIRL_BANNER_PATTERN.get());
 		this.spawnEggItem(SNAIL_SPAWN_EGG.get(), TURKEY_SPAWN_EGG.get());
+
+//		ResourceLocation chestplate = ForgeRegistries.ITEMS.getKey(SNAIL_SHELL_CHESTPLATE.get());
+//		OverrideBuilder chestplateModel = item(SNAIL_SHELL_CHESTPLATE.get(), "generated").override();
+//		float trimType = 0.1F;
+//		for (String trim : new String[]{"quartz", "iron", "netherite", "redstone", "copper", "gold", "emerald", "diamond", "lapis", "amethyst"}) {
+//			ResourceLocation name = new ResourceLocation(chestplate.getNamespace(), chestplate.getPath() + "_" + trim + "_trim");
+//			chestplateModel = chestplateModel.model(new UncheckedModelFile(name)).predicate(new ResourceLocation("trim_type"), trimType);
+//			trimType += 0.1F;
+//			withExistingParent(name.getPath(), "item/generated")
+//					.texture("layer0", new ResourceLocation(this.modid, "item/" + chestplate.getPath()))
+//					.texture("layer1", "minecraft:trims/items/chestplate_trim"); //_" + trim);
+//		}
 	}
 
 	private void generatedItem(ItemLike... items) {
@@ -38,9 +51,9 @@ public class AutumnityItemModelProvider extends ItemModelProvider {
 			item(item, "handheld");
 	}
 
-	private void item(ItemLike item, String type) {
+	private ItemModelBuilder item(ItemLike item, String type) {
 		ResourceLocation itemName = ForgeRegistries.ITEMS.getKey(item.asItem());
-		withExistingParent(itemName.getPath(), "item/" + type).texture("layer0", new ResourceLocation(this.modid, "item/" + itemName.getPath()));
+		return withExistingParent(itemName.getPath(), "item/" + type).texture("layer0", new ResourceLocation(this.modid, "item/" + itemName.getPath()));
 	}
 
 	private void spawnEggItem(ItemLike... items) {

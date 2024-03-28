@@ -31,7 +31,7 @@ public class AutumnityItemTagsProvider extends ItemTagsProvider {
 	}
 
 	@Override
-	public void addTags(HolderLookup.Provider provider) {
+	public void addTags(Provider provider) {
 		this.copy(BlockTags.SLABS, ItemTags.SLABS);
 		this.copy(BlockTags.STAIRS, ItemTags.STAIRS);
 		this.copy(BlockTags.WALLS, ItemTags.WALLS);
@@ -51,6 +51,7 @@ public class AutumnityItemTagsProvider extends ItemTagsProvider {
 		this.tag(ItemTags.PIGLIN_REPELLENTS).add(SOUL_JACK_O_LANTERN.get().asItem(), LARGE_SOUL_JACK_O_LANTERN_SLICE.get().asItem());
 		this.tag(ItemTags.BOATS).add(AutumnityItems.MAPLE_BOAT.getFirst().get());
 		this.tag(ItemTags.CHEST_BOATS).add(AutumnityItems.MAPLE_BOAT.getSecond().get());
+		this.tag(ItemTags.TRIMMABLE_ARMOR).add(AutumnityItems.SNAIL_SHELL_CHESTPLATE.get());
 		this.tag(BlueprintItemTags.FURNACE_BOATS).add(AutumnityItems.MAPLE_FURNACE_BOAT.get());
 		this.tag(BlueprintItemTags.LARGE_BOATS).add(AutumnityItems.LARGE_MAPLE_BOAT.get());
 		this.tag(ItemTags.FOX_FOOD).add(AutumnityItems.FOUL_BERRIES.get());
