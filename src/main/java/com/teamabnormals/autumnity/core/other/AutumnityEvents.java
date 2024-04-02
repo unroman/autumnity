@@ -43,6 +43,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SuspiciousStewItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CakeBlock;
@@ -100,7 +101,8 @@ public class AutumnityEvents {
 
 		if (entity instanceof Zombie || entity instanceof AbstractSkeleton) {
 			if (entity.getItemBySlot(EquipmentSlot.HEAD).isEmpty()) {
-				if (level.getBiome(entity.blockPosition()).is(AutumnityBiomes.PUMPKIN_FIELDS) && level.getRandom().nextFloat() < 0.05F) {
+				BlockPos pos = entity.blockPosition();
+				if (level.getRandom().nextFloat() < 0.05F && level.getBrightness(LightLayer.SKY, pos) > 11 && level.getBiome(pos).is(AutumnityBiomes.PUMPKIN_FIELDS)) {
 					entity.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Blocks.CARVED_PUMPKIN));
 					entity.setDropChance(EquipmentSlot.HEAD, 0.0F);
 				}
