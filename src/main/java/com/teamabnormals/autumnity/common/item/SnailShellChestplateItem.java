@@ -30,7 +30,7 @@ public class SnailShellChestplateItem extends ArmorItem {
 
 	@Override
 	public void onArmorTick(ItemStack stack, Level world, Player player) {
-		if (player.isShiftKeyDown()) {
+		if (!world.isClientSide() && player.isShiftKeyDown() && !player.isSpectator()) {
 			player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 10, 2, false, false, true));
 		}
 	}
