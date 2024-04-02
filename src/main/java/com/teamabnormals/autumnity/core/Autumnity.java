@@ -1,7 +1,5 @@
 package com.teamabnormals.autumnity.core;
 
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
 import com.teamabnormals.autumnity.client.model.SnailModel;
 import com.teamabnormals.autumnity.client.model.TurkeyModel;
 import com.teamabnormals.autumnity.client.renderer.entity.SnailRenderer;
@@ -23,9 +21,6 @@ import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -41,8 +36,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 @Mod(Autumnity.MOD_ID)
